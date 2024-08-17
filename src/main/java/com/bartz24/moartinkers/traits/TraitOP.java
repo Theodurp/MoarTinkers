@@ -19,9 +19,9 @@ public class TraitOP extends AbstractTraitLeveled {
 	public void onToolBuilding(TinkerEvent.OnItemBuilding event) {
 		if (TinkerUtil.hasTrait(event.tag, this.getIdentifier())) {
 			ToolNBT data = TagUtil.getToolStats(event.tag);
-			data.attackSpeedMultiplier *= 0.3f;
+			data.attackSpeedMultiplier *= 2.0f;
 			NBTTagCompound toolTag = data.get();
-			toolTag.setInteger(Tags.FREE_MODIFIERS, 0);
+			toolTag.setInteger(Tags.FREE_MODIFIERS, 5);
 			TagUtil.setToolTag(event.tag, data.get());
 		}
 	}
@@ -29,7 +29,7 @@ public class TraitOP extends AbstractTraitLeveled {
 	@Override
 	public void applyModifierEffect(NBTTagCompound rootCompound) {
 	    NBTTagCompound toolTag = TagUtil.getToolTag(rootCompound);
-	    toolTag.setInteger(Tags.FREE_MODIFIERS, 0);
+	    toolTag.setInteger(Tags.FREE_MODIFIERS, 5);
 	    TagUtil.setToolTag(rootCompound, toolTag);
 	}
 }
